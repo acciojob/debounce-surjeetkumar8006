@@ -8,14 +8,15 @@ function debounce(callback, delay, immediate = false) {
     clearTimeout(timer);
 
     timer = setTimeout(() => {
-      // After the delay, always reset timer
+      // Always reset timer after delay
       timer = null;
-      // If not immediate mode, execute callback now
+      // If not immediate, call after delay
       if (!immediate) {
         callback.apply(context, args);
       }
     }, delay);
 
+    // For immediate mode, call right away if allowed
     if (callNow) {
       callback.apply(context, args);
     }
